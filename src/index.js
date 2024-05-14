@@ -1,20 +1,23 @@
-//🕵️‍♀️Feature #2
-//Add a search engine: a search bar with a button. When searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
-
-function searchBar(event) {
+function search(event) {
   event.preventDefault();
-
   let searchInputElement = document.querySelector("#search-input");
-  let cityInput = document.querySelector("#city");
+  let cityElement = document.querySelector("#current-city");
+  let city = searchInputElement.value;
+  cityElement.innerHTML = searchInputElement.value;
 
-  cityInput.innerHTML = searchInputElement.value;
+  let apiKey = "67160eaaec4o69a29b0ff296te075931";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayTemperature);
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", searchBar);
-
-//⏰Feature #1
-//In your project, display the current date and time using JavaScript: Tuesday 16:00
+function displayTemperature(response) {
+  let temperatureElement = document.querySelector(".current-temperature-value");
+  let temperatureText = Math.round(response.data.temperature.current);
+  let cityElement = document.querySelector("#current-city");
+  cityElement.innerHTML = response.data.city;
+  temperatureElement.innerHTML = temperatureText;
+}
 
 function formatDate(date) {
   let minutes = date.getMinutes();
@@ -43,7 +46,10 @@ function formatDate(date) {
   return `${formattedDay} ${hours}:${minutes}`;
 }
 
-let currentDate = new Date();
-let currentDateElement = document.querySelector("#current-date");
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", search);
 
-currentDateElement.innerHTML = formatDate(currentDate);
+let currentDateELement = document.querySelector("#current-date");
+let currentDate = new Date();
+
+currentDateELement.innerHTML = formatDate(currentDate);
