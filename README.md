@@ -23,9 +23,9 @@ Netlify
 <h2>How to Use</h2>
 To use the app, simply type the name of the city you want to search for in the search bar and press search.
 
-<h3>Availible Features</h3>
+<h3>Availible Features:</h3>
 <li>Current day of the week and time (hour:minutes)</li>
-<li> Current live weather data: temperature, condition description, humidity, wind speed<li>
+<li> Current live weather data: temperature, condition description, humidity, wind speed</li>
 <li>Toggle between Celsius and Fahrenheit temperature units</li>
 
 <h2>Demo </h2>
