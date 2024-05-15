@@ -56,7 +56,9 @@ main {
   box-shadow: 0 5px 20px rgba(223, 208, 208, 0.514);
 }
 .forecast {
-  border-bottom: 1px solid #737bb9;
+  border-top: 1px solid #737bb9;
+  padding-top: 20px;
+  color: #33312f;
 }
 
 .current-temperature {
