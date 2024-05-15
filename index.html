@@ -29,18 +29,25 @@
         </form>
       </header>
       <main>
+        <div class="unit-toggle">
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
         <div class="current-weather">
           <div>
-            <h1 class="current-city" id="city"> Copenhagen</h1>
+            <h1 class="current-city" id="city">Find Your City's Weather</h1>
             <p class="current-details">
-              <span id="current-date"></span>
-              ,moderate rain <br />
-              Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>
+              <span id="current-date"> </span>
+              , <span id="status"> </span> <br />
+              Humidity: <strong id="humidity"> </strong>, Wind:
+              <strong id="wind-speed"> </strong>
             </p>
           </div>
           <div class="current-temperature">
-            <span id="current-temperature-icon">☀️</span
-            ><span id="current-temperature-value">20</span
+            <div id="current-temperature-icon"></div>
+            <span id="current-temperature-value">20</span
             ><span id="current-temperature-unit">°C</span>
           </div>
         </div>

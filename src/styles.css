@@ -23,6 +23,10 @@ header {
   padding-bottom: 30px;
 }
 
+.search-form {
+  max-width: 600px;
+  justify-content: space-between;
+}
 .search-input {
   background-color: #e8e9f3e3;
   border: none;
@@ -64,6 +68,7 @@ main {
 .current-temperature {
   font-size: 48px;
   color: #e8e9f3;
+  display: flex;
 }
 
 .current-weather {
@@ -72,9 +77,9 @@ main {
 }
 
 .current-city {
-  font-size: 38px;
+  font-size: 30px;
   font-weight: 900;
-  margin: 0;
+  margin: auto;
   color: #e8e9f3;
 }
 .current-details {
@@ -88,22 +93,23 @@ main {
   color: #9ec8ff;
 }
 
-.current-temperature-icon {
-  position: relative;
-  top: -8px;
-  font-size: 40px;
-  margin-right: 10px;
+#current-temperature-icon {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
 }
 
-.current-temperature-value {
+#current-temperature-value {
   font-size: 80px;
   font-weight: bold;
+  line-height: 80px;
+  margin-top: 20px;
 }
 
-.current-temperature-unit {
-  font-size: 28px;
-  position: relative;
-  top: -38px;
+#current-temperature-unit {
+  font-size: 20px;
+  line-height: 80px;
+  mmargin-top: 0px;
 }
 
 footer {

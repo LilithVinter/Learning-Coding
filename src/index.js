@@ -1,23 +1,37 @@
 //search inputs
-function search(event) {
-  event.preventDefault();
-  let searchInputElement = document.querySelector("#search-input");
-  let cityElement = document.querySelector("#city");
-  let city = searchInputElement.value;
-  cityElement.innerHTML = searchInputElement.value;
 
+function displayTemperature(response) {
+  console.log(response);
+  let temperatureDegrees = document.querySelector("#current-temperature-value");
+  let temperatureText = Math.round(response.data.temperature.current);
+  let cityElement = document.querySelector("#city");
+  let condition = document.querySelector("#status");
+  let humidityPercent = document.querySelector("#humidity");
+  let windSpeed = document.querySelector("#wind-speed");
+
+  cityElement.innerHTML = response.data.city;
+  temperatureDegrees.innerHTML = temperatureText;
+  condition.innerHTML = response.data.condition.description;
+  humidityPercent.innerHTML = `${response.data.temperature.humidity} %`;
+  windSpeed.innerHTML = `${response.data.wind.speed} km/h`;
+
+  let weatherIcon = document.querySelector("#current-temperature-icon");
+  weatherIcon.innerHTML = `<img src="${response.data.condition.icon_url}" id="current-temperature-icon"/>`;
+}
+
+function searchCity(city) {
   let apiKey = "67160eaaec4o69a29b0ff296te075931";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayTemperature);
 }
 
-function displayTemperature(response) {
-  let temperatureElement = document.querySelector("#current-temperature-value");
-  let temperatureText = Math.round(response.data.temperature.current);
+function search(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-input");
   let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = response.data.city;
-  temperatureElement.innerHTML = temperatureText;
+  cityElement.innerHTML = searchInput.value;
+  searchCity(searchInput.value);
 }
 
 let searchForm = document.querySelector("#search-form");
