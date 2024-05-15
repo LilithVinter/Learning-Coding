@@ -39,18 +39,19 @@ header {
 
 .search-button {
   margin-left: 15px;
-  font-size: 18px;
+  font-size: 16px;
   background-color: #adb4e5;
   color: #33312f;
   border: none;
-  padding: 20px;
-  line-height: 1;
+  padding: 14px;
   border-radius: 50px;
+  transition: 0.2ms ease-in-out;
 }
 .search-button:hover {
   cursor: pointer;
   background-color: #737bb9;
   color: #e8e9f3;
+  border: 2px groove #e8e9f3;
 }
 
 main {
@@ -109,7 +110,7 @@ main {
 #current-temperature-unit {
   font-size: 20px;
   line-height: 80px;
-  mmargin-top: 0px;
+  margin-top: 0px;
 }
 
 footer {
@@ -117,4 +118,74 @@ footer {
   padding-top: 15px;
 
   color: #000000;
+}
+
+/* Extra: toggle design */
+.toggle {
+  display: flex;
+  justify-content: right;
+  margin-top: -10px;
+  padding-bottom: 50px;
+  font-weight: medium;
+  color: #e8e9f3;
+}
+
+.unit-switch {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  grid-auto-flow: column;
+  gap: 5px;
+  width: 100px;
+  height: 30px;
+  padding: 4px 20px;
+  border: 1px solid #737bb9;
+  background-color: #4e43765e;
+  border-radius: 30px;
+}
+
+.unit-switch input {
+  position: absolute;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+}
+
+.unit-text {
+  user-select: none;
+  text-align: center;
+  line-height: 0px;
+  margin-top: 2px;
+  font-size: 16px;
+}
+
+.toggle-button {
+  position: relative;
+  pointer-events: none;
+  width: 60px;
+  height: 30px;
+  border-radius: 30px;
+  box-shadow: inset 0px -1px 5px rgba(255, 255, 255, 0.4);
+}
+
+.toggle-button::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: -1px;
+  border-radius: 30px;
+  background-color: #4e4376;
+  box-shadow: inset 0px -1px 3px rgba(255, 255, 255, 0.4);
+  transition: transform 0.4s;
+  transform: translateX(0%);
+}
+
+.unit-switch input:checked + .toggle-button::after {
+  background-color: #33312f;
+  transform: translateX(100%);
+  rotate: (90deg);
 }

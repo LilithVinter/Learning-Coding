@@ -1,7 +1,6 @@
 //search inputs
 
 function displayTemperature(response) {
-  console.log(response);
   let temperatureDegrees = document.querySelector("#current-temperature-value");
   let temperatureText = Math.round(response.data.temperature.current);
   let cityElement = document.querySelector("#city");
@@ -11,9 +10,9 @@ function displayTemperature(response) {
 
   cityElement.innerHTML = response.data.city;
   temperatureDegrees.innerHTML = temperatureText;
-  condition.innerHTML = response.data.condition.description;
-  humidityPercent.innerHTML = `${response.data.temperature.humidity} %`;
-  windSpeed.innerHTML = `${response.data.wind.speed} km/h`;
+  condition.innerHTML = ` , ${response.data.condition.description}`;
+  humidityPercent.innerHTML = `Humidity: ${response.data.temperature.humidity},`;
+  windSpeed.innerHTML = `Wind: ${response.data.wind.speed}`;
 
   let weatherIcon = document.querySelector("#current-temperature-icon");
   weatherIcon.innerHTML = `<img src="${response.data.condition.icon_url}" id="current-temperature-icon"/>`;
@@ -21,8 +20,28 @@ function displayTemperature(response) {
 
 function searchCity(city) {
   let apiKey = "67160eaaec4o69a29b0ff296te075931";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  let units = "metric";
 
+  var isChecked = document.querySelector("#unitToggle").checked;
+
+  function unitSwitch(event) {
+    if (toggle.checked) {
+      let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+      axios.get(apiUrl).then(displayTemperature);
+      let unitText = document.querySelector("#current-temperature-unit");
+      unitText.innerHTML = `°F`;
+    } else {
+      let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+      axios.get(apiUrl).then(displayTemperature);
+      let unitText = document.querySelector("#current-temperature-unit");
+      unitText.innerHTML = `°C`;
+    }
+  }
+
+  let toggle = document.querySelector("#unitToggle");
+  toggle.addEventListener("change", unitSwitch);
+
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayTemperature);
 }
 

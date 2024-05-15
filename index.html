@@ -29,10 +29,12 @@
         </form>
       </header>
       <main>
-        <div class="unit-toggle">
-          <label class="switch">
-            <input type="checkbox" />
-            <span class="slider round"></span>
+        <div class="toggle">
+          <label class="unit-switch">
+            <span class="unit-text">°C</span>
+            <input type="checkbox" name="unitsCheckbox" id="unitToggle" />
+            <span class="toggle-button"></span>
+            <span class="unit-text">°F</span>
           </label>
         </div>
         <div class="current-weather">
@@ -40,15 +42,15 @@
             <h1 class="current-city" id="city">Find Your City's Weather</h1>
             <p class="current-details">
               <span id="current-date"> </span>
-              , <span id="status"> </span> <br />
-              Humidity: <strong id="humidity"> </strong>, Wind:
+              <span id="status"> </span> <br />
+              <strong id="humidity"> </strong>
               <strong id="wind-speed"> </strong>
             </p>
           </div>
           <div class="current-temperature">
             <div id="current-temperature-icon"></div>
-            <span id="current-temperature-value">20</span
-            ><span id="current-temperature-unit">°C</span>
+            <span id="current-temperature-value"> </span
+            ><span id="current-temperature-unit">°C </span>
           </div>
         </div>
         <div class="forecast">Forecast coming soon...</div>
