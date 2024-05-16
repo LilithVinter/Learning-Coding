@@ -1,7 +1,7 @@
 <em> DISCLAIMER: This is currently a work-in-progress project. Not all features are finalized. </em>
 
 <h1> Weather App </h1>
-This is a web app developed as a final project using HTML, CSS, and Vanilla JavaScript. It is hosted on Netlify and utilizes both SheCodes Weather API to fetch weather data. The app allows users to search for the weather conditions of any city in the world and provides current weather conditions, a 7-day forecast, and current weather data.
+This is a web app developed as a final project using HTML, CSS, and Vanilla JavaScript. It is hosted on Netlify and utilizes both SheCodes Weather API to fetch weather data. The app allows users to search for the weather conditions of any city in the world and provides current weather conditions and a 7-day forecast.
 
 <h2>How to Use</h2>
 To use the app, simply type the name of the city you want to search for in the search bar and press search.
