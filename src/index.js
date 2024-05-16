@@ -18,34 +18,6 @@ function displayTemperature(response) {
   weatherIcon.innerHTML = `<img src="${response.data.condition.icon_url}" id="current-temperature-icon"/>`;
 }
 
-//toggle unit switch + getting API
-function searchCity(city) {
-  let apiKey = "67160eaaec4o69a29b0ff296te075931";
-  let units = "metric";
-
-  var isChecked = document.querySelector("#unitToggle").checked;
-
-  function unitSwitch(event) {
-    if (toggle.checked) {
-      let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
-      axios.get(apiUrl).then(displayTemperature);
-      let unitText = document.querySelector("#current-temperature-unit");
-      unitText.innerHTML = `°F`;
-    } else {
-      let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-      axios.get(apiUrl).then(displayTemperature);
-      let unitText = document.querySelector("#current-temperature-unit");
-      unitText.innerHTML = `°C`;
-    }
-  }
-
-  let toggle = document.querySelector("#unitToggle");
-  toggle.addEventListener("change", unitSwitch);
-
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(displayTemperature);
-}
-
 function search(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-input");
@@ -56,6 +28,41 @@ function search(event) {
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
+
+//toggle unit switch + getting API
+function searchCity(city) {
+  let apiKey = "67160eaaec4o69a29b0ff296te075931";
+  let units = "metric";
+
+  var isChecked = document.querySelector("#unitToggle").checked;
+
+  function unitSwitch(event) {
+    if (toggle.checked) {
+      let apiUrlCurrent = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+      axios.get(apiUrlCurrent).then(displayTemperature);
+      let unitText = document.querySelector("#current-temperature-unit");
+      unitText.innerHTML = `°F`;
+      let apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
+      axios(apiUrlForecast).then(displayForecast);
+    } else {
+      let apiUrlCurrent = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+      axios.get(apiUrlCurrent).then(displayTemperature);
+      let unitText = document.querySelector("#current-temperature-unit");
+      unitText.innerHTML = `°C`;
+      let apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+      axios(apiUrlForecast).then(displayForecast);
+    }
+  }
+
+  let toggle = document.querySelector("#unitToggle");
+  toggle.addEventListener("change", unitSwitch);
+
+  let apiUrlCurrent = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
+  axios.get(apiUrlCurrent).then(displayTemperature);
+
+  let apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${units}`;
+  axios(apiUrlForecast).then(displayForecast);
+}
 
 //dates
 function formatDate(date) {
@@ -90,23 +97,29 @@ let currentDate = new Date();
 
 currentDateELement.innerHTML = formatDate(currentDate);
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 // weather forecast
 
-function displayForecast() {
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+function displayForecast(response) {
   let forecastHtml = "";
 
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day) {
     forecastHtml += `
       <div class="weather-forecast-days">
-       <div class="weather-forecast-date">${day}</div>
+       <div class="weather-forecast-date">${formatDay(day.time)}</div>
         <img
-              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
-              alt="weather forecast icon" id="weather-forecast-icon"
+              src="${day.condition.icon_url}"
+              id="weather-forecast-icon"
         />
         <div class="weather-forecast-temp">
-          <span id="max-temp">18°</span>
-          <span id="min-temp"> 12°</span>
+          <span id="max-temp">${Math.round(day.temperature.maximum)}°</span>
+          <span id="min-temp">${Math.round(day.temperature.minimum)}°</span>
       </div>
     </div>
     `;
