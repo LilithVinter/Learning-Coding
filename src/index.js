@@ -10,7 +10,7 @@ function displayTemperature(response) {
 
   cityElement.innerHTML = response.data.city;
   temperatureDegrees.innerHTML = temperatureText;
-  condition.innerHTML = ` , ${response.data.condition.description}`;
+  condition.innerHTML = `, ${response.data.condition.description}`;
   humidityPercent.innerHTML = `Humidity: ${response.data.temperature.humidity},`;
   windSpeed.innerHTML = `Wind: ${response.data.wind.speed}`;
 
@@ -18,6 +18,7 @@ function displayTemperature(response) {
   weatherIcon.innerHTML = `<img src="${response.data.condition.icon_url}" id="current-temperature-icon"/>`;
 }
 
+//toggle unit switch + getting API
 function searchCity(city) {
   let apiKey = "67160eaaec4o69a29b0ff296te075931";
   let units = "metric";
@@ -88,3 +89,31 @@ let currentDateELement = document.querySelector("#current-date");
 let currentDate = new Date();
 
 currentDateELement.innerHTML = formatDate(currentDate);
+
+// weather forecast
+
+function displayForecast() {
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml += `
+      <div class="weather-forecast-days">
+       <div class="weather-forecast-date">${day}</div>
+        <img
+              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+              alt="weather forecast icon" id="weather-forecast-icon"
+        />
+        <div class="weather-forecast-temp">
+          <span id="max-temp">18°</span>
+          <span id="min-temp"> 12°</span>
+      </div>
+    </div>
+    `;
+  });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+
+displayForecast();
