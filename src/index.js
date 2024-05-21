@@ -10,7 +10,7 @@ function displayTemperature(response) {
 
   cityElement.innerHTML = response.data.city;
   temperatureDegrees.innerHTML = temperatureText;
-  condition.innerHTML = `, ${response.data.condition.description}`;
+  condition.innerHTML = `${response.data.condition.description}`;
   humidityPercent.innerHTML = `Humidity: ${response.data.temperature.humidity},`;
   windSpeed.innerHTML = `Wind: ${response.data.wind.speed}`;
 
@@ -99,7 +99,7 @@ currentDateELement.innerHTML = formatDate(currentDate);
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
-  let days = ["sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return days[date.getDay()];
 }
