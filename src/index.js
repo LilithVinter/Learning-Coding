@@ -89,7 +89,7 @@ function formatDate(date) {
   ];
 
   let formattedDay = days[day];
-  return `${formattedDay} ${hours}:${minutes}`;
+  return `Your current time is ${formattedDay} ${hours}:${minutes}`;
 }
 
 let currentDateELement = document.querySelector("#current-date");

@@ -11,7 +11,7 @@
     />
     <link rel="stylesheet" href="src/styles.css" />
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
-    <title>Weather App</title>
+    <title>Weather + Clock App</title>
   </head>
   <body>
     <div class="weather-app">
@@ -28,7 +28,7 @@
           <input type="submit" value="Search 🔎" class="search-button" />
         </form>
       </header>
-      <main>
+      <main class="weatherApp">
         <div class="toggle">
           <label class="unit-switch">
             <span class="unit-text">°C</span>
@@ -39,13 +39,12 @@
         </div>
         <div class="current-weather">
           <div>
-            <p id="current-date"></p>
             <h1 class="current-city" id="city">Find Your City's Weather</h1>
             <p class="current-details">
               <strong id="humidity"> </strong>
               <strong id="wind-speed"> </strong>
               <br />
-              <span id="status"> </span> 
+              <span id="status"> </span>
             </p>
           </div>
           <div class="current-temperature">
@@ -56,6 +55,33 @@
         </div>
         <h2 class="weatherForecast">🔮Week ahead</h2>
         <div id="forecast"></div>
+      </main>
+      <main class="clockApp">
+        <div class="clocks">
+          <h2 class="clockAppHeader">Check Local Times</h2>
+          <p id="current-date"></p>
+          <select>
+            <option value="">Select a city...</option>
+            <option value="Europe/London">London</option>
+            <option value="Europe/Copenhagen">Copenhagen</option>
+            <option value="Pacific/Vancouer">Vancover</option>
+            <option value="Australia/Sydney">Sydney</option>
+            <option value="Asia/HongKong">Hong Kong</option>
+          </select>
+
+          <div class="cities">
+            <h3> London  </h3>
+            <div class=""date"> 24 May 2024 </div>
+            <div class="time"> 05:46:00 </div>
+          </div>
+
+          <div class="cities">
+            <h3> Copenhagen </h3>
+            <div class=""date"> 24 May 2024 </div>
+            <div class="time"> 05:46:00 </div>
+          </div>
+
+        </div>
       </main>
       <footer>
         <p>

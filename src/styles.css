@@ -59,6 +59,7 @@ main {
   background: #adb3e5a2;
   border-radius: 10px;
   box-shadow: 0 5px 20px rgba(223, 208, 208, 0.514);
+  margin-bottom: 50px;
 }
 
 .current-temperature {
@@ -115,12 +116,15 @@ main {
   margin-top: 0px;
 }
 
-.weatherForecast {
-  border-top: 1px solid #737bb9;
-  padding-top: 20px;
+h2 {
   color: #33312f;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.weatherForecast {
+  border-top: 1px solid #737bb9;
+  padding-top: 20px;
 }
 
 #forecast {
