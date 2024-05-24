@@ -173,6 +173,50 @@ h2 {
   color: #e2dbff;
 }
 
+/* clock app styles */
+
+h3 {
+  color: #33312f;
+  font-size: 30px;
+  line-height: 10px;
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+select {
+  display: block;
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.cities {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #737bb9;
+  padding: 20px;
+}
+
+.dateTime {
+  vertical-align: middle;
+}
+
+.date {
+  color: #c4cafa;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 30px;
+}
+
+.time {
+  color: #4e4376;
+  font-size: 40px;
+  font-weight: bold;
+}
+
 footer {
   text-align: center;
   padding-top: 15px;
