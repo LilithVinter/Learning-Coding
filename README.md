@@ -1,7 +1,7 @@
 <em> DISCLAIMER: This is currently a work-in-progress project. Not all features are finalized. </em>
 
-<h1> Weather App </h1>
-This is a web app developed as a final project using HTML, CSS, and Vanilla JavaScript. It is hosted on Netlify and utilizes both SheCodes Weather API to fetch weather data. The app allows users to search for the weather conditions of any city in the world and provides current weather conditions and a 7-day forecast.
+<h1> Weather + Clock App </h1>
+This is a web app developed as a final project using HTML, CSS, and Vanilla JavaScript. It is hosted on Netlify and utilizes both SheCodes Weather API to fetch weather data. The app allows users to search for the weather conditions and time of any city in the world and provides current weather conditions and a 7-day forecast.
 
 <h2>How to Use</h2>
 To use the app, simply type the name of the city you want to search for in the search bar and press search.
@@ -20,6 +20,9 @@ A live demo of the weather app can be found <a href="https://carie-learning-to-c
 <li>
 Detect your current position and display the weather conditions for your location utilizing OpenWeatherMap API 
 </li>
+<li>
+Time change depending on timezone and city selected
+</li>
 
 <h2>Technologies & Tools Used </h2>
 HTML
@@ -28,6 +31,7 @@ Vanilla JavaScript
 VS Code
 SheCodes Weather API
 Netlify
+Moment
 
 <h2>Credits</h2>
 The weather app was created by Carie (@LilithVinter) as a final project for the SheCodes Plus workshop.
