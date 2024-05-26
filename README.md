@@ -5,6 +5,7 @@ This is a web app developed as a final project using HTML, CSS, and Vanilla Java
 
 <h2>How to Use</h2>
 To use the weather section, simply type the name of the city you want to search for in the search bar and press search. 
+<br/>
 To use the clock section, simply select the timezone from the dropdown selector that you want.
 
 <h3>Availible Features:</h3>
@@ -28,15 +29,15 @@ Detect your current position and display the weather conditions for your locatio
 
 
 <h2>Technologies & Tools Used </h2>
-HTML
-CSS
-Vanilla JavaScript
-VS Code
-SheCodes Weather API
-Netlify
-Moment + Moment Timezones
+<li>HTML</li>
+<li>CSS</li>
+<li>Vanilla JavaScript</li>
+<li>Visual Studio Code</li>
+<li>SheCodes Weather API</li>
+<li>Netlify</li>
+<li>Moment + Moment Timezones</li>
 
 <h2>Credits</h2>
 The weather app was created by Carie (@LilithVinter) as a final project for the SheCodes Plus workshops.
-
+<br/>
 The app uses the SheCodes weather API and OpenWeatherMap API to retrieve weather data.
