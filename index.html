@@ -10,6 +10,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.45/moment-timezone-with-data-1970-2030.min.js"></script>
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
     <title>Weather + Clock App</title>
   </head>
@@ -69,19 +71,33 @@
             <option value="Asia/HongKong">Hong Kong</option>
           </select>
 
-          <div class="cities">
+          <div id="displayTime">
+            <input
+              type="radio"
+              name="displayTime"
+              id="24hr"
+              checked
+              value="24"
+            />
+            <label for="24hr"> 24 Hour Time</label>
+
+            <input type="radio" name="displayTime" id="12hr" value="12" />
+            <label for="12hr"> 12 Hour Time</label>
+          </div>
+
+          <div class="cities" id="london">
             <h3>London</h3>
-            <div class="dateTime">
-              <div class="date">24 May 2024</div>
-              <div class="time">05:46:00</div>
+            <div class="timezoneInfo">
+              <div class="date"></div>
+              <div class="time"></div>
             </div>
           </div>
 
-          <div class="cities">
+          <div class="cities" id="copenhagen">
             <h3>Copenhagen</h3>
-            <div class="dateTime">
-              <div class="date">24 May 2024</div>
-              <div class="time">05:46:00</div>
+            <div class="timezoneInfo">
+              <div class="date"></div>
+              <div class="time"></div>
             </div>
           </div>
         </div>

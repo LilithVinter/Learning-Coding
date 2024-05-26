@@ -78,18 +78,10 @@ function formatDate(date) {
     hours = `0${hours}`;
   }
 
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   let formattedDay = days[day];
-  return `Your current time is ${formattedDay} ${hours}:${minutes}`;
+  return `Your current time is <strong> ${formattedDay},${hours}:${minutes} </strong>`;
 }
 
 let currentDateELement = document.querySelector("#current-date");
@@ -103,6 +95,33 @@ function formatDay(timestamp) {
 
   return days[date.getDay()];
 }
+
+//clock app
+
+function timeFormat(event) {
+  if (document.querySelector('input[id="12hr"][value="12"]').checked) {
+    function updateTime() {
+      londonTime.innerHTML = moment()
+        .tz("Europe/London")
+        .format("hh:mm:ss [<small>]A[</small>]");
+    }
+  }
+  if (document.querySelector('input[id="24hr"][value="24"]').checked) {
+    function updateTime() {
+      londonTime.innerHTML = moment().tz("Europe/London").format("HH:mm:ss");
+    }
+  }
+  setInterval(updateTime, 1000);
+}
+
+let londonElement = document.querySelector("#london");
+let londonDate = londonElement.querySelector(".timezoneInfo .date");
+let londonTime = londonElement.querySelector(".timezoneInfo .time");
+let timeDisplay = document.querySelector("#displayTime");
+timeDisplay.addEventListener("change", timeFormat);
+
+londonDate.innerHTML = moment().tz("Europe/London").format("ddd, DD MMMM YYYY");
+timeFormat();
 
 // weather forecast
 
