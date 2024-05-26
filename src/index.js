@@ -87,8 +87,6 @@ function formatDate(date) {
 let currentDateELement = document.querySelector("#current-date");
 let currentDate = new Date();
 
-currentDateELement.innerHTML = formatDate(currentDate);
-
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -96,25 +94,58 @@ function formatDay(timestamp) {
   return days[date.getDay()];
 }
 
-//cities dropwdown selector
-function updateCity(event) {
-  let cityTimezone = event.target.value;
-  let cityName = cityTimezone.replace("_", " ").split("/")[1];
-  let cityTime = moment().tz(cityTimezone);
+//clock app - display timeformatter
 
-  //clock app
-  function timeFormat(event) {
-    setInterval(function () {
+//clock app - local time
+function yourLocalTime() {
+  let location = document.querySelector("#default");
+  if (location) {
+    let localDate = document.querySelector(".timezoneInfo .date");
+    let localTimezone = document.querySelector(".timezoneInfo .time");
+    let localCityName = moment.tz.guess();
+
+    localDate.innerHTML = moment.tz(localCityName).format("ddd, DD MMMM YYYY");
+
+    let localHeader = document.querySelector("#cityHeader");
+    localHeader.innerHTML = localCityName.replace("_", " ").split("/")[1];
+
+    setInterval(function timeFormatter() {
       if (document.querySelector('input[id="12hr"][value="12"]').checked) {
-        localTime.innerHTML = `${cityTime.format(
-          "hh:mm:ss [<small>]A[</small>]"
-        )}`;
+        localTimezone.innerHTML = moment
+          .tz(localCityName)
+          .format("hh:mm:ss [<small>]A[</small>]");
       }
 
       if (document.querySelector('input[id="24hr"][value="24"]').checked) {
-        localTime.innerHTML = `${cityTime.format("HH:mm:ss")}`;
+        localTimezone.innerHTML = moment.tz(localCityName).format("HH:mm:ss");
       }
     }, 1000);
+  }
+  let timeSelector = document.querySelector("#displayTime");
+  timeSelector.addEventListener("change", timeFormatter);
+}
+setInterval(yourLocalTime, 1000);
+
+//cities dropwdown selector
+
+function updateCity(event) {
+  let cityTimezone = event.target.value;
+  let cityTime = moment().tz(cityTimezone);
+  let cityName = cityTimezone.replace("_", " ").split("/")[1];
+  if (cityTimezone === "current") {
+    location.reload();
+  }
+  //clock app
+  function timeFormat(event) {
+    if (document.querySelector('input[id="12hr"][value="12"]').checked) {
+      localTime.innerHTML = `${cityTime.format(
+        "hh:mm:ss [<small>]A[</small>]"
+      )}`;
+    }
+
+    if (document.querySelector('input[id="24hr"][value="24"]').checked) {
+      localTime.innerHTML = `${cityTime.format("HH:mm:ss")}`;
+    }
   }
 
   let cititesElement = document.querySelector("#cityList");

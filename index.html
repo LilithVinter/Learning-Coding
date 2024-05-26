@@ -63,7 +63,7 @@
           <h2 class="clockAppHeader">⌛Check Local Times</h2>
           <p id="current-date"></p>
           <select id="citySelector">
-            <option value="">Select a city...</option>
+            <option value="current">Your Local Time</option>
             <option value="Europe/London">London</option>
             <option value="Europe/Copenhagen">Copenhagen</option>
             <option value="America/Vancouver">Vancouver</option>
@@ -85,8 +85,8 @@
             <label for="12hr"> 12-hour Time</label>
           </div>
           <div id="cityList">
-            <div class="cities" id="citiesInfo">
-              <h3></h3>
+            <div class="cities" id="default">
+              <h3 id="cityHeader"></h3>
               <div class="timezoneInfo">
                 <div class="date"></div>
                 <div class="time"></div>
