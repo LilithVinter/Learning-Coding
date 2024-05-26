@@ -96,30 +96,44 @@ function formatDay(timestamp) {
   return days[date.getDay()];
 }
 
-//clock app
-function timeFormat(event) {
-  setInterval(function () {
-    if (document.querySelector('input[id="12hr"][value="12"]').checked) {
-      londonTime.innerHTML = moment()
-        .tz("Europe/London")
-        .format("hh:mm:ss [<small>]A[</small>]");
-    }
+//cities dropwdown selector
+function updateCity(event) {
+  let cityTimezone = event.target.value;
+  let cityName = cityTimezone.replace("_", " ").split("/")[1];
+  let cityTime = moment().tz(cityTimezone);
 
-    if (document.querySelector('input[id="24hr"][value="24"]').checked) {
-      londonTime.innerHTML = moment().tz("Europe/London").format("HH:mm:ss");
-    }
-  }, 1000);
+  //clock app
+  function timeFormat(event) {
+    setInterval(function () {
+      if (document.querySelector('input[id="12hr"][value="12"]').checked) {
+        localTime.innerHTML = `${cityTime.format(
+          "hh:mm:ss [<small>]A[</small>]"
+        )}`;
+      }
+
+      if (document.querySelector('input[id="24hr"][value="24"]').checked) {
+        localTime.innerHTML = `${cityTime.format("HH:mm:ss")}`;
+      }
+    }, 1000);
+  }
+
+  let cititesElement = document.querySelector("#cityList");
+  cititesElement.innerHTML = `<div class="cities" id="citiesInfo">
+      <h3>${cityName}</h3>
+        <div class="timezoneInfo">
+          <div class="date">${cityTime.format("ddd, DD MMMM YYYY")}</div>
+          <div class="time">${cityTime.format("HH:mm:ss")} </div>
+        </div>
+    </div>`;
+
+  let localTime = document.querySelector("#citiesInfo .timezoneInfo .time");
+
+  let timeDisplay = document.querySelector("#displayTime");
+  timeDisplay.addEventListener("change", timeFormat);
 }
 
-let londonElement = document.querySelector("#london");
-let londonDate = londonElement.querySelector(".timezoneInfo .date");
-let londonTime = londonElement.querySelector(".timezoneInfo .time");
-let timeDisplay = document.querySelector("#displayTime");
-timeDisplay.addEventListener("change", timeFormat);
-
-londonDate.innerHTML = moment().tz("Europe/London").format("ddd, DD MMMM YYYY");
-
-timeFormat();
+let citiesSelect = document.querySelector("#citySelector");
+citiesSelect.addEventListener("change", updateCity);
 
 // weather forecast
 

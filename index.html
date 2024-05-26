@@ -62,13 +62,13 @@
         <div class="clocks">
           <h2 class="clockAppHeader">⌛Check Local Times</h2>
           <p id="current-date"></p>
-          <select>
+          <select id="citySelector">
             <option value="">Select a city...</option>
             <option value="Europe/London">London</option>
             <option value="Europe/Copenhagen">Copenhagen</option>
-            <option value="Pacific/Vancouer">Vancover</option>
+            <option value="America/Vancouver">Vancouver</option>
             <option value="Australia/Sydney">Sydney</option>
-            <option value="Asia/HongKong">Hong Kong</option>
+            <option value="Asia/Hong_Kong">Hong Kong</option>
           </select>
 
           <div id="displayTime">
@@ -84,20 +84,13 @@
             <input type="radio" name="displayTime" id="12hr" value="12" />
             <label for="12hr"> 12-hour Time</label>
           </div>
-
-          <div class="cities" id="london">
-            <h3>London</h3>
-            <div class="timezoneInfo">
-              <div class="date"></div>
-              <div class="time"></div>
-            </div>
-          </div>
-
-          <div class="cities" id="copenhagen">
-            <h3>Copenhagen</h3>
-            <div class="timezoneInfo">
-              <div class="date"></div>
-              <div class="time"></div>
+          <div id="cityList">
+            <div class="cities" id="citiesInfo">
+              <h3></h3>
+              <div class="timezoneInfo">
+                <div class="date"></div>
+                <div class="time"></div>
+              </div>
             </div>
           </div>
         </div>
