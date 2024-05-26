@@ -12,8 +12,11 @@ To use the clock section, simply select the timezone from the dropdown selector 
 <li>Current live weather data: temperature, condition description, humidity, wind speed</li>
 <li>Toggle between Celsius and Fahrenheit temperature units</li>
 <li> A 7-day forecast for the searched city </li>
-<li>Current day of the week and time (hour: minutes)</li>
+<li>Current local time (hour: minutes:seconds)</li>
 <li>Toggle between 12-hour and 24-hour time format</li>
+<li>
+Time changes depending on the city selected from the dropdown selector
+</li>
 
 <h2>Demo </h2>
 A live demo of the weather app can be found <a href="https://carie-learning-to-code.netlify.app"> here </a>.
@@ -22,9 +25,7 @@ A live demo of the weather app can be found <a href="https://carie-learning-to-c
 <li>
 Detect your current position and display the weather conditions for your location utilizing OpenWeatherMap API 
 </li>
-<li>
-Time changes depending on the city selected from the dropdown selector
-</li>
+
 
 <h2>Technologies & Tools Used </h2>
 HTML
