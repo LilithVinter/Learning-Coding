@@ -97,21 +97,18 @@ function formatDay(timestamp) {
 }
 
 //clock app
-
 function timeFormat(event) {
-  if (document.querySelector('input[id="12hr"][value="12"]').checked) {
-    function updateTime() {
+  setInterval(function () {
+    if (document.querySelector('input[id="12hr"][value="12"]').checked) {
       londonTime.innerHTML = moment()
         .tz("Europe/London")
         .format("hh:mm:ss [<small>]A[</small>]");
     }
-  }
-  if (document.querySelector('input[id="24hr"][value="24"]').checked) {
-    function updateTime() {
+
+    if (document.querySelector('input[id="24hr"][value="24"]').checked) {
       londonTime.innerHTML = moment().tz("Europe/London").format("HH:mm:ss");
     }
-  }
-  setInterval(updateTime, 1000);
+  }, 1000);
 }
 
 let londonElement = document.querySelector("#london");
@@ -121,6 +118,7 @@ let timeDisplay = document.querySelector("#displayTime");
 timeDisplay.addEventListener("change", timeFormat);
 
 londonDate.innerHTML = moment().tz("Europe/London").format("ddd, DD MMMM YYYY");
+
 timeFormat();
 
 // weather forecast
