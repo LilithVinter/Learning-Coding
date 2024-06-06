@@ -1,5 +1,3 @@
-<em> DISCLAIMER: This is currently a work-in-progress project. Not all features are finalized. </em>
-
 <h1> Weather + Clock App </h1>
 This is a web app developed as a final project using HTML, CSS, and Vanilla JavaScript. The app allows users to search for the weather conditions and time of any city in the world and provides current weather conditions, a 7-day forecast, and a simple limited timezones selector.
 
@@ -22,12 +20,6 @@ Time changes depending on the city selected from the dropdown selector
 <h2>Demo </h2>
 A live demo of the weather app can be found <a href="https://carie-learning-to-code.netlify.app"> here </a>.
 
-<h2>Features to Come</h2>
-<li>
-Detect your current position and display the weather conditions for your location utilizing OpenWeatherMap API 
-</li>
-
-
 <h2>Technologies & Tools Used </h2>
 <li>HTML</li>
 <li>CSS</li>
@@ -40,4 +32,4 @@ Detect your current position and display the weather conditions for your locatio
 <h2>Credits</h2>
 The weather app was created by Carie (@LilithVinter) as a final project for the SheCodes Plus workshops.
 <br/>
-The app uses the SheCodes weather API and OpenWeatherMap API to retrieve weather data.
+The app uses the SheCodes weather API to retrieve weather data.
